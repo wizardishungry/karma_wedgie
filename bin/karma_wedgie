@@ -2,16 +2,9 @@
 
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 require 'rubygems'
-require 'karma_wedgie'
-require 'highline/import'
+require 'karma_wedgie_console'
 
 puts "Starting up; this may take some time if you have a large Keychain\n"
 
-kw = KarmaWedgie.new
-
-#kw.list
-#exit
-
-while line = ask("Password regexp?: "){|q| q.echo = false}
-  kw.query(line){|range| ask "action?: " }
-end
+kw = KarmaWedgieConsole.new
+kw.run

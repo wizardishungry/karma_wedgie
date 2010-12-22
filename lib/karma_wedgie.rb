@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'keychain'
 
-
 class KarmaWedgie
   VERSION = '0.0.0'
   def query(line)
