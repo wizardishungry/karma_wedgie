@@ -1,17 +1,19 @@
 #!/usr/bin/env ruby
 
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+require 'rubygems'
 require 'karma_wedgie'
+require 'highline/import'
 
-# Store the state of the terminal
-stty_save = `stty -g`.chomp
-
-
-while line = Readline.readline('> ', false)
-  KarmaWedgie.query line
+def get_secret(prompt="Password regexp:")
+   ask(prompt) {|q| q.echo = false}
 end
 
-rescue Interrupt => e
-  system('stty', stty_save) # Restore
-  exit
+kw = KarmaWedgie.new
+kw.list
+exit
+while line = get_secret
+  kw.query line
 end
+
+

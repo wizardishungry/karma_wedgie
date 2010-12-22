@@ -16,6 +16,7 @@ Query OSX Keychain to look for passwords that might be comprised / similar
 == REQUIREMENTS:
 
 * keychain: https://github.com/WIZARDISHUNGRY/keychain_services
+* highline: gem
  
 == INSTALL:
 
