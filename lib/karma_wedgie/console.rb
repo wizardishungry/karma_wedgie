@@ -4,8 +4,6 @@ require 'highline/import'
 
 module KarmaWedgie
   class Console < Base 
-
-
     def run
       begin
         while line = ask("Password regexp?: "){|q| q.echo = false}
@@ -29,7 +27,7 @@ module KarmaWedgie
     end
 
     def present_action(action,i)
-      puts "#{sprintf "%2d",i}#{action}\n"
+      puts "#{sprintf "%2d",i}\t#{action}\n"
     end
 
     def display(i)
