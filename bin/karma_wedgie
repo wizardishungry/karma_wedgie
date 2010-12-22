@@ -5,15 +5,13 @@ require 'rubygems'
 require 'karma_wedgie'
 require 'highline/import'
 
-def get_secret(prompt="Password regexp:")
-   ask(prompt) {|q| q.echo = false}
-end
+puts "Starting up; this may take some time if you have a large Keychain\n"
 
 kw = KarmaWedgie.new
-kw.list
-exit
-while line = get_secret
-  kw.query line
+
+#kw.list
+#exit
+
+while line = ask("Password regexp?: "){|q| q.echo = false}
+  kw.query(line){|range| ask "action?: " }
 end
-
-
