@@ -1,3 +1,17 @@
 #!/usr/bin/env ruby
 
-abort "you need to write me"
+$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+require 'karma_wedgie'
+
+# Store the state of the terminal
+stty_save = `stty -g`.chomp
+
+
+while line = Readline.readline('> ', false)
+  KarmaWedgie.query line
+end
+
+rescue Interrupt => e
+  system('stty', stty_save) # Restore
+  exit
+end

@@ -14,7 +14,7 @@ Hoe.spec 'karma_wedgie' do
   # you'll never have to touch them again!
   # (delete this comment too, of course)
 
-  # developer('FIX', 'FIX@example.com')
+   developer('Jonathan Williams', 'jonathan.williams@gmail.com')
 
   # self.rubyforge_name = 'karma_wedgiex' # if different than 'karma_wedgie'
 end
