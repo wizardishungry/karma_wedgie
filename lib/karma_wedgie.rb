@@ -17,9 +17,11 @@ class KarmaWedgie
       end
  
   end
+
   def display(i)
         puts "#{i.account}\t#{i.server}\t#{i.modified_date}\t#{i.protocol}\t#{i.path}\t#{i.creator}\n" 
   end
+
   def list
     @items.select { |i| 
         #!(i.protocol=~/http|htps/) &&
@@ -39,9 +41,11 @@ class KarmaWedgie
     # path
     # security_domain
   end
+
   def initialize
     @items = Keychain.items.
       select { |i| (i.protocol=~/^(http|htps)$/) }. # change this to suit you
       sort { |a,b| b.modified_date <=> a.modified_date } # newest first
   end
+
 end
