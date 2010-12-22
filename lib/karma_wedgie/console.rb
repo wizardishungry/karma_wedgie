@@ -23,10 +23,18 @@ module KarmaWedgie
     end
 
     def present_actions(actions)
+      actions.each_with_index do |action,i|
+        present_action(action,i)
+      end
     end
 
-    def present_action(action,i=nil)
-      print i if i
+    def present_action(action,i)
+      puts "#{sprintf "%2d",i}#{action}\n"
+    end
+
+    def display(i)
+          puts "#{i.account}\t#{i.server}\t#{i.modified_date}\t#{i.protocol}\t#{i.path}\t#{i.creator}\n" 
+          present_actions(get_actions i)
     end
 
   end

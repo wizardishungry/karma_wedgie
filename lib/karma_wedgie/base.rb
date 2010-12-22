@@ -14,11 +14,10 @@ module KarmaWedgie
     end
 
     def get_actions(item)
-      
-    end
-
-    def display(i)
-          puts "#{i.account}\t#{i.server}\t#{i.modified_date}\t#{i.protocol}\t#{i.path}\t#{i.creator}\n" 
+      [
+        Action.new("http://#{item}.server/","Visit site to change password"),
+        Action.new(nil,"Continue matching"),
+      ]
     end
 
     def list
