@@ -1,26 +1,25 @@
 = karma_wedgie
 
-* FIX (url)
+https://github.com/WIZARDISHUNGRY/karma_wedgie
 
 == DESCRIPTION:
 
-FIX (describe your package)
+Query OSX Keychain to look for passwords that might be comprised / similar
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+* TBD
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
-
+* keychain: https://github.com/WIZARDISHUNGRY/keychain_services
+ 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+* sudo gem install
 
 == DEVELOPERS:
 
@@ -35,7 +34,7 @@ and generate the RDoc.
 
 (The MIT License)
 
-Copyright (c) 2010 FIX
+Copyright (c) 2010 Jonathan Williams 
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
