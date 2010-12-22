@@ -2,9 +2,9 @@
 
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 require 'rubygems'
-require 'karma_wedgie_console'
+require 'karma_wedgie'
 
 puts "Starting up; this may take some time if you have a large Keychain\n"
 
-kw = KarmaWedgieConsole.new
+kw = KarmaWedgie::Console.new
 kw.run
