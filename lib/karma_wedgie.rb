@@ -4,12 +4,7 @@ require 'keychain'
 class KarmaWedgie
   VERSION = '0.0.0'
   def query(line)
-      begin
-        item = @items.find { |item| item.password =~ Regexp.new(line) }
-      rescue
-        puts "got error #{$!}\n"
-        item = nil
-      end
+      item = @items.find { |item| item.password =~ Regexp.new(line) }
 
       if item
         display item
