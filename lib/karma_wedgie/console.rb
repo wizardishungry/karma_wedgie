@@ -2,6 +2,8 @@ require 'karma_wedgie'
 require 'rubygems'
 require 'highline/import'
 
+$0 = File.basename $<.filename
+
 module KarmaWedgie
   class Console < Base 
     def run

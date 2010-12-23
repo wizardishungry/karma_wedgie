@@ -5,6 +5,7 @@ module KarmaWedgie
       @url=url
       @label=label
     end
+    
     def to_s
       "#{@label} #{@url}"
     end
