@@ -32,7 +32,7 @@ module KarmaWedgie
 
     def display(i)
           puts "#{i.account}\t#{i.server}\t#{i.modified_date}\t#{i.protocol}\t#{i.path}\t#{i.creator}\n" 
-          present_actions(get_actions i)
+          present_actions Action.defaults i
     end
 
   end
