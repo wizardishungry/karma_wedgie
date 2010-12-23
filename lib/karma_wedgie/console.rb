@@ -2,8 +2,6 @@ require 'karma_wedgie'
 require 'rubygems'
 require 'highline/import'
 
-$0 = File.basename $<.filename
-
 module KarmaWedgie
   class Console < Base 
     def run
@@ -14,11 +12,11 @@ module KarmaWedgie
       rescue EOFError
         # do nothing for now
       rescue Interrupt
-          puts "Interrupt, exiting"
+          puts "\nInterrupt, exiting"
           system "stty echo"
           exit 1
-      rescue
-        puts "ERROR: #{$!}\n"
+      #rescue
+      #  puts "ERROR: #{$!}\n"
       end
     end
 
