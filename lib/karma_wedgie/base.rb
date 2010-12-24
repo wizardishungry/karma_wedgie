@@ -8,7 +8,8 @@ module KarmaWedgie
 
         if item
           item.url = "http://#{item.server}/" # totally not reasonable
-          display item
+          actions = item.display
+          choice actions.count
         end
   
     end

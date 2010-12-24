@@ -20,9 +20,10 @@ module KarmaWedgie
       end
     end
 
-    def display(i)
-          puts "#{i.account}\t#{i.server}\t#{i.modified_date}\t#{i.protocol}\t#{i.path}\t#{i.creator}\n" 
-          Action.defaults.each_with_index { |action,i| action.present(i) }
+
+    def choice(count)
+      max=count-1
+      number = ask("1-#{max} ? ", Integer) { |q| q.in = 1..max }
     end
 
   end
