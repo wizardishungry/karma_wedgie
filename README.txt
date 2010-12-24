@@ -31,6 +31,19 @@ After checking out the source, run:
 This task will install any missing dependencies, run the tests/specs,
 and generate the RDoc.
 
+Fields in Keychain::Item:
+  FIELDS
+  modified_date
+  server
+  authentication_type => form
+  password
+  account
+  creation_date
+  protocol => http,htps,afp,smtp,imap,etc <-- 4 letter codes
+  creator
+  path
+  security_domain
+
 == LICENSE:
 
 (The MIT License)
