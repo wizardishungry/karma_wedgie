@@ -26,6 +26,7 @@ module KarmaWedgie
       Action.new("Continue matching"){},
       Action.new("Continue matching, ignoring same site for the remainder of the session"){},
       Action.new("Delete entry"){},
+      Action.new("Delete all other entries for #{item.server}"){},
       Action.new("Delete entry and all other entries for #{item.server}"){},
       Action.new("Clear ignore list and return to regular expression entry"){},
       Action.new("Return to regular expression entry"){},
