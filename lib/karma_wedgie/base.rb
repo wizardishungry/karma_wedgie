@@ -40,7 +40,5 @@ module KarmaWedgie
     end
 
   end
-  class Keychain::Item
-    attr_accessor :url
-  end
+
 end

@@ -5,4 +5,20 @@ require 'karma_wedgie/console'
 
 module KarmaWedgie
   VERSION = '0.0.0'
+
+  class Keychain::Item
+
+    attr_accessor :url
+
+    def to_s
+      "#{account}\t#{server}\t#{modified_date}\t#{protocol}\t#{path}\t#{creator}"
+    end
+
+    def display
+          puts "#{to_s}\n"
+          Action.defaults(self).each_with_index { |action,i| action.present(i) }
+    end
+
+  end
+
 end
