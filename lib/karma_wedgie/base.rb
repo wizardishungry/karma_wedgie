@@ -7,6 +7,7 @@ module KarmaWedgie
         item = @items.find { |item| item.password =~ Regexp.new(line) }
 
         if item
+          item.url = "http://#{item.server}/" # totally not reasonable
           display item
         end
   
@@ -38,5 +39,8 @@ module KarmaWedgie
         sort { |a,b| b.modified_date <=> a.modified_date } # newest first
     end
 
+  end
+  class Keychain::Item
+    attr_accessor :url
   end
 end

@@ -1,25 +1,27 @@
 module KarmaWedgie
-  class Action
-    attr_accessor :url, :label
-    def initialize(url,label)
-      @url=url
+  class Action < Proc
+    attr_accessor :item, :label
+
+    def initialize(item,label)
+      @item=item
       @label=label
+      super()
     end
-    
+
     def to_s
-      "#{@label} #{@url}"
+      label
     end
 
     def self.defaults(item)
     [
-      Action.new("http://#{item.server}/","Visit site to change password"),
-      Action.new("","Change password right now"),
-      Action.new(nil,"Continue matching"),
-      Action.new(nil,"Continue matching, ignoring same site for the remainder of the session"),
-      Action.new(nil,"Delete entry"),
-      Action.new(nil,"Delete entry and all other entries for #{item.server}"),
-      Action.new(nil,"Clear ignore list and return to regular expression entry"),
-      Action.new(nil,"Return to regular expression entry"),
+      Action.new(item,"Visit site to change password #{item.url}"){ `open #{item.url}` },
+      Action.new(item,"Change password right now"){},
+      Action.new(item,"Continue matching"){},
+      Action.new(item,"Continue matching, ignoring same site for the remainder of the session"){},
+      Action.new(item,"Delete entry"){},
+      Action.new(item,"Delete entry and all other entries for #{item.server}"){},
+      Action.new(item,"Clear ignore list and return to regular expression entry"){},
+      Action.new(item,"Return to regular expression entry"){},
     ]
     end
   end
