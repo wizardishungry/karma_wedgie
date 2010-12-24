@@ -2,8 +2,7 @@ module KarmaWedgie
   class Action < Proc
     attr_accessor :item, :label
 
-    def initialize(item,label)
-      @item=item
+    def initialize(label)
       @label=label
       super()
     end
@@ -13,21 +12,21 @@ module KarmaWedgie
     end
 
     def present(i)
-      puts "#{sprintf "%2d",i}\t#{to_s}\n"
+      puts "#{sprintf "%2d",i+1}\t#{to_s}\n"
     end
 
 
     def self.defaults(item)
     [
-      Action.new(item,"Visit site to change password #{item.url}"){ `open #{item.url}` },
-      Action.new(item,"Change password right now"){},
-      Action.new(item,"Continue matching"){},
-      Action.new(item,"Continue matching, ignoring same site for the remainder of the session"){},
-      Action.new(item,"Delete entry"){},
-      Action.new(item,"Delete entry and all other entries for #{item.server}"){},
-      Action.new(item,"Clear ignore list and return to regular expression entry"){},
-      Action.new(item,"Return to regular expression entry"){},
-    ]
+      Action.new("Visit site to change password #{item.url}"){ `open #{item.url}` },
+      Action.new("Change password right now"){},
+      Action.new("Continue matching"){},
+      Action.new("Continue matching, ignoring same site for the remainder of the session"){},
+      Action.new("Delete entry"){},
+      Action.new("Delete entry and all other entries for #{item.server}"){},
+      Action.new("Clear ignore list and return to regular expression entry"){},
+      Action.new("Return to regular expression entry"){},
+    ].each { |a| a.item = item }
     end
   end
 end
