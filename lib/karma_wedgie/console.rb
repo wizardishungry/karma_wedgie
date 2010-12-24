@@ -28,7 +28,7 @@ module KarmaWedgie
 
     def choice(count)
       max=count-1
-      number = ask("1-#{max} ? ", Integer) { |q| q.in = 1..max }
+      number = ask("1-#{max} ? ", Integer) { |q| q.in = 1..max } - 1
     end
 
     def initialize
