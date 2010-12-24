@@ -12,7 +12,7 @@ module KarmaWedgie
       rescue EOFError
         # do nothing for now
       rescue Interrupt
-          puts "\nInterrupt, exiting"
+          puts "\nInterrupt, exiting."
           system "stty echo"
           exit 1
       #rescue
@@ -20,19 +20,9 @@ module KarmaWedgie
       end
     end
 
-    def present_actions(actions)
-      actions.each_with_index do |action,i|
-        present_action(action,i)
-      end
-    end
-
-    def present_action(action,i)
-      puts "#{sprintf "%2d",i}\t#{action}\n"
-    end
-
     def display(i)
           puts "#{i.account}\t#{i.server}\t#{i.modified_date}\t#{i.protocol}\t#{i.path}\t#{i.creator}\n" 
-          present_actions Action.defaults i
+          Action.defaults.each_with_index { |action,i| action.present(i) }
     end
 
   end

@@ -12,6 +12,11 @@ module KarmaWedgie
       label
     end
 
+    def present(i)
+      puts "#{sprintf "%2d",i}\t#{to_s}\n"
+    end
+
+
     def self.defaults(item)
     [
       Action.new(item,"Visit site to change password #{item.url}"){ `open #{item.url}` },
