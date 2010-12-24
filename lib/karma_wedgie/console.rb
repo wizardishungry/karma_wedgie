@@ -4,6 +4,7 @@ require 'highline/import'
 
 module KarmaWedgie
   class Console < Base 
+
     def run
       begin
         while line = ask("Password regexp?: "){|q| q.echo = false}
@@ -24,7 +25,6 @@ module KarmaWedgie
       #  puts "ERROR: #{$!}\n"
       end
     end
-
 
     def choice(count)
       max=count-1

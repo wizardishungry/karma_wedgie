@@ -19,5 +19,4 @@ module KarmaWedgie
     end
 
   end
-
 end

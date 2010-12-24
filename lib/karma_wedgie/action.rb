@@ -1,17 +1,22 @@
 module KarmaWedgie
-  class Action < Proc
+  class Action
 
     include FSM
 
     attr_accessor :label
 
-    def initialize(label)
+    def initialize(label,mname)
       @label=label
-      super()
+      @mname=mname
     end
 
     def to_s
       label
+    end
+
+    def call (fsm)
+      method(@mname).call
+      copy_into fsm
     end
 
     def present(i)
@@ -21,18 +26,26 @@ module KarmaWedgie
 
     def self.defaults(item,fsm)
       [
-        Action.new("Visit site to change password #{item.url}"){ `open #{item.url}` },
-        Action.new("Change password right now"){},
-        Action.new("Continue matching"){},
-        Action.new("Continue matching, ignoring same site for the remainder of the session"){},
-        Action.new("Delete entry"){},
-        Action.new("Delete all other entries for #{item.server}"){},
-        Action.new("Delete entry and all other entries for #{item.server}"){},
-        Action.new("Clear ignore list and return to regular expression entry"){},
-        Action.new("Return to regular expression entry"){},
+        Action.new("Visit site to change password #{item.url}", :open_url),
+        #Action.new("Change password right now",:do_nothing),
+        Action.new("Continue matching",:do_nothing),
+        Action.new("Continue matching, ignoring same site for the remainder of the session",:do_nothing),
+        Action.new("Delete entry",:do_nothing),
+        #Action.new("Delete all other entries for #{item.server}",:do_nothing),
+        #Action.new("Delete entry and all other entries for #{item.server}",:do_nothing),
+        Action.new("Clear ignore lists and return to regular expression entry",:do_nothing),
+        Action.new("Return to regular expression entry",:do_nothing),
       ].each do |a|
         fsm.copy_into a
       end
+    end
+
+    def open_url
+      `open #{item.url}`
+    end
+
+    def do_nothing
+      puts "do_nothing() called\n"
     end
 
   end

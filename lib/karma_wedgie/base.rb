@@ -8,13 +8,14 @@ module KarmaWedgie
     include FSM
 
     def query(line)
-        item = @items.find { |item| item.password =~ Regexp.new(line) }
+        @item = @items.find { |item| item.password =~ Regexp.new(line) }
 
-        while item
-          item.url = "http://#{item.server}/" # totally not reasonable
-          item.display
-          actions = Action.defaults(item,self).each_with_index { |action,i| action.present(i) }
-          actions[choice(actions.count)].call
+        while @item
+          @item.url = "http://#{@item.server}/" # totally not reasonable
+          @item.display
+          actions = Action.defaults(@item,self).each_with_index { |action,i| action.present(i) }
+          action = actions[choice(actions.count)]
+          action.call self
         end
   
     end
