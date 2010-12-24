@@ -16,7 +16,6 @@ module KarmaWedgie
 
     def display
           puts "#{to_s}\n"
-          Action.defaults(self).each_with_index { |action,i| action.present(i) }
     end
 
   end

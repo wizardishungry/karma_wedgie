@@ -12,7 +12,8 @@ module KarmaWedgie
 
         while item
           item.url = "http://#{item.server}/" # totally not reasonable
-          actions = item.display
+          item.display
+          actions = Action.defaults(item,self).each_with_index { |action,i| action.present(i) }
           actions[choice(actions.count)].call
         end
   
@@ -35,5 +36,4 @@ module KarmaWedgie
     end
 
   end
-
 end

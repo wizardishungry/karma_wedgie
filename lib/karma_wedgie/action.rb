@@ -19,18 +19,21 @@ module KarmaWedgie
     end
 
 
-    def self.defaults(item)
-    [
-      Action.new("Visit site to change password #{item.url}"){ `open #{item.url}` },
-      Action.new("Change password right now"){},
-      Action.new("Continue matching"){},
-      Action.new("Continue matching, ignoring same site for the remainder of the session"){},
-      Action.new("Delete entry"){},
-      Action.new("Delete all other entries for #{item.server}"){},
-      Action.new("Delete entry and all other entries for #{item.server}"){},
-      Action.new("Clear ignore list and return to regular expression entry"){},
-      Action.new("Return to regular expression entry"){},
-    ].each { |a| a.item = item }
+    def self.defaults(item,fsm)
+      [
+        Action.new("Visit site to change password #{item.url}"){ `open #{item.url}` },
+        Action.new("Change password right now"){},
+        Action.new("Continue matching"){},
+        Action.new("Continue matching, ignoring same site for the remainder of the session"){},
+        Action.new("Delete entry"){},
+        Action.new("Delete all other entries for #{item.server}"){},
+        Action.new("Delete entry and all other entries for #{item.server}"){},
+        Action.new("Clear ignore list and return to regular expression entry"){},
+        Action.new("Return to regular expression entry"){},
+      ].each do |a|
+        fsm.copy_into a
+      end
     end
+
   end
 end
