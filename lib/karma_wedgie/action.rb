@@ -1,6 +1,9 @@
 module KarmaWedgie
   class Action < Proc
-    attr_accessor :item, :label
+
+    include FSM
+
+    attr_accessor :label
 
     def initialize(label)
       @label=label

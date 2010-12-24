@@ -2,7 +2,11 @@ require 'rubygems'
 require 'keychain'
 
 module KarmaWedgie
-  class Base 
+  VERSION = '0.0.0'
+  class Base
+
+    include FSM
+
     def query(line)
         item = @items.find { |item| item.password =~ Regexp.new(line) }
 
