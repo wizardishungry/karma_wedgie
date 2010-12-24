@@ -6,10 +6,10 @@ module KarmaWedgie
     def query(line)
         item = @items.find { |item| item.password =~ Regexp.new(line) }
 
-        if item
+        while item
           item.url = "http://#{item.server}/" # totally not reasonable
           actions = item.display
-          choice actions.count
+          actions[choice(actions.count)].call
         end
   
     end
